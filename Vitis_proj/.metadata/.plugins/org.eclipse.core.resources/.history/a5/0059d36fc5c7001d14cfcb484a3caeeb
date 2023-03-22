@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="hello" location="D:/FPGA/ADS_bus_CS/Vitis_proj/hello" platform="D:/FPGA/ADS_bus_CS/Vitis_proj/ADS_bus_CS_new/export/ADS_bus_CS_new/ADS_bus_CS_new.xpfm" platformUID="xilinx:zed::0.0(custom)" systemProject="hello_system" sysConfig="ADS_bus_CS_new" runtime="C/C++" cpu="standalone_domain" cpuInstance="ps7_cortexa9_0" os="standalone" mssSignature="9504a46536f24f8f9d90445b7b98735f">
+  <configuration name="Debug" id="xilinx.gnu.armv7.exe.debug.1064156412">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.armv7.exe.release.2039458679" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="hello_world"/>
+</sdkproject:SdkProject>

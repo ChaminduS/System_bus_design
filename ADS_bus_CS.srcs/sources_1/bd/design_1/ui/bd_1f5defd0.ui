@@ -1,0 +1,77 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.657031",
+   "Default View_TopLeft":"-397,-399",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0.21  2019-05-29 bk=1.5064 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port DDR -pg 1 -lvl 5 -x 2070 -y 800 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 5 -x 2070 -y 830 -defaultsOSRD
+preplace port leds_8bits -pg 1 -lvl 5 -x 2070 -y -20 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 1 -x 190 -y 850 -defaultsOSRD
+preplace inst Arbiter_0 -pg 1 -lvl 4 -x 1680 -y 360 -defaultsOSRD
+preplace inst rst_ps7_0_100M -pg 1 -lvl 1 -x 190 -y 640 -defaultsOSRD
+preplace inst ps7_0_axi_periph -pg 1 -lvl 2 -x 580 -y 590 -defaultsOSRD
+preplace inst axi_gpio_0 -pg 1 -lvl 2 -x 580 -y 790 -defaultsOSRD
+preplace inst NodesAXI_0 -pg 1 -lvl 3 -x 1070 -y 360 -defaultsOSRD
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 4 -10 530 400 900 730 750 1340J
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 2 0 540 370
+preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 1 3 420 910 750 760 1460J
+preplace netloc NodesAXI_0_mast1_valid 1 3 1 1450 150n
+preplace netloc NodesAXI_0_mast1_type 1 3 1 1440 170n
+preplace netloc NodesAXI_0_mast1_id 1 3 1 1430 190n
+preplace netloc NodesAXI_0_mast1_addr 1 3 1 1420 210n
+preplace netloc NodesAXI_0_mast1_wdata 1 3 1 1410 230n
+preplace netloc NodesAXI_0_mast2_valid 1 3 1 1400 250n
+preplace netloc NodesAXI_0_mast2_type 1 3 1 1390 270n
+preplace netloc NodesAXI_0_mast2_id 1 3 1 1380 290n
+preplace netloc NodesAXI_0_mast2_addr 1 3 1 1370 310n
+preplace netloc NodesAXI_0_mast2_wdata 1 3 1 1360 330n
+preplace netloc NodesAXI_0_mast3_valid 1 3 1 1350 350n
+preplace netloc NodesAXI_0_mast3_type 1 3 1 1330 370n
+preplace netloc NodesAXI_0_mast3_id 1 3 1 1320 390n
+preplace netloc NodesAXI_0_mast3_addr 1 3 1 1310 410n
+preplace netloc NodesAXI_0_mast3_wdata 1 3 1 1300 430n
+preplace netloc NodesAXI_0_slav1_rdata 1 3 1 1290 450n
+preplace netloc NodesAXI_0_slav1_ready 1 3 1 1280 470n
+preplace netloc NodesAXI_0_slav2_rdata 1 3 1 1270 490n
+preplace netloc NodesAXI_0_slav2_ready 1 3 1 1260 510n
+preplace netloc NodesAXI_0_slav3_rdata 1 3 1 1250 530n
+preplace netloc NodesAXI_0_slav3_ready 1 3 1 1240 550n
+preplace netloc NodesAXI_0_slav3_split 1 3 1 1230 570n
+preplace netloc Arbiter_0_mast1_rdata 1 2 3 770 -30 NJ -30 1940
+preplace netloc Arbiter_0_mast1_ready 1 2 3 780 -20 NJ -20 1930
+preplace netloc Arbiter_0_mast2_rdata 1 2 3 790 -10 NJ -10 1920
+preplace netloc Arbiter_0_mast2_ready 1 2 3 800 0 NJ 0 1910
+preplace netloc Arbiter_0_mast3_rdata 1 2 3 810 10 NJ 10 1900
+preplace netloc Arbiter_0_mast3_ready 1 2 3 820 20 NJ 20 1890
+preplace netloc Arbiter_0_slav1_valid 1 2 3 850 60 NJ 60 1860
+preplace netloc Arbiter_0_slav1_type 1 2 3 830 50 NJ 50 1880
+preplace netloc Arbiter_0_slav1_master_id 1 2 3 760 40 NJ 40 1950
+preplace netloc Arbiter_0_slav1_wdata 1 2 3 840 70 NJ 70 1870
+preplace netloc Arbiter_0_slav1_addr 1 2 3 730 30 NJ 30 1960
+preplace netloc Arbiter_0_slav2_valid 1 2 3 760 680 NJ 680 1950
+preplace netloc Arbiter_0_slav2_type 1 2 3 780 670 NJ 670 1930
+preplace netloc Arbiter_0_slav2_master_id 1 2 3 820 660 NJ 660 1890
+preplace netloc Arbiter_0_slav2_wdata 1 2 3 790 690 NJ 690 1920
+preplace netloc Arbiter_0_slav2_addr 1 2 3 840 650 NJ 650 1870
+preplace netloc Arbiter_0_slav3_valid 1 2 3 770 730 NJ 730 1940
+preplace netloc Arbiter_0_slav3_type 1 2 3 800 720 NJ 720 1910
+preplace netloc Arbiter_0_slav3_master_id 1 2 3 830 710 NJ 710 1880
+preplace netloc Arbiter_0_slav3_wdata 1 2 3 810 740 NJ 740 1900
+preplace netloc Arbiter_0_slav3_addr 1 2 3 850 700 NJ 700 1860
+preplace netloc ps7_0_axi_periph_M01_AXI 1 1 2 430 880 720
+preplace netloc ps7_0_axi_periph_M00_AXI 1 2 1 720 130n
+preplace netloc processing_system7_0_DDR 1 1 4 410J 870 740J 800 NJ 800 NJ
+preplace netloc processing_system7_0_FIXED_IO 1 1 4 380J 890 810J 830 NJ 830 NJ
+preplace netloc axi_gpio_0_GPIO 1 2 3 NJ 790 NJ 790 1970
+preplace netloc processing_system7_0_M_AXI_GP0 1 1 1 390 510n
+levelinfo -pg 1 -30 190 580 1070 1680 2070
+pagesize -pg 1 -db -bbox -sgen -30 -40 2190 950
+"
+}
+{
+   "da_axi4_cnt":"5",
+   "da_clkrst_cnt":"2",
+   "da_ps7_cnt":"1"
+}

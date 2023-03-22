@@ -1,0 +1,31 @@
+Nothing to build in platform 'ADS_bus_CS_new'
+
+15:03:46 **** Incremental Build of configuration Debug for project hello ****
+make all 
+make --no-print-directory pre-build
+a9-linaro-pre-build-step
+' '
+make --no-print-directory main-build
+'Building file: ../src/ADS_bus_app.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ADS_bus_app.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -ID:/FPGA/ADS_bus_CS/Vitis_proj/ADS_bus_CS_new/export/ADS_bus_CS_new/sw/ADS_bus_CS_new/standalone_domain/bspinclude/include -MMD -MP -MF"src/ADS_bus_app.d" -MT"src/ADS_bus_app.o" -o "src/ADS_bus_app.o" "../src/ADS_bus_app.c"
+'Finished building: ../src/ADS_bus_app.c'
+' '
+'Building target: hello.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -LD:/FPGA/ADS_bus_CS/Vitis_proj/ADS_bus_CS_new/export/ADS_bus_CS_new/sw/ADS_bus_CS_new/standalone_domain/bsplib/lib -o "hello.elf"  ./src/ADS_bus_app.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hello.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hello.elf  |tee "hello.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  32412	   1544	  23272	  57228	   df8c	hello.elf
+'Finished building: hello.elf.size'
+' '
+15:03:47 **** Incremental Build of configuration Debug for project hello_system ****
+make all 
+Generating bif file for the system project
+generate_system_bif.bat 56042 D:/FPGA/ADS_bus_CS/Vitis_proj/ADS_bus_CS_new/export/ADS_bus_CS_new/ADS_bus_CS_new.xpfm standalone_domain D:/FPGA/ADS_bus_CS/Vitis_proj/hello_system/Debug/system.bif
+sdcard_gen --xpfm D:/FPGA/ADS_bus_CS/Vitis_proj/ADS_bus_CS_new/export/ADS_bus_CS_new/ADS_bus_CS_new.xpfm --sys_config ADS_bus_CS_new --bif D:/FPGA/ADS_bus_CS/Vitis_proj/hello_system/Debug/system.bif --bitstream D:/FPGA/ADS_bus_CS/Vitis_proj/hello/_ide/bitstream/design_1_wrapper.bit --elf D:/FPGA/ADS_bus_CS/Vitis_proj/hello/Debug/hello.elf,ps7_cortexa9_0
+creating BOOT.BIN using D:/FPGA/ADS_bus_CS/Vitis_proj/hello/_ide/bitstream/design_1_wrapper.bit
+Running F:/Vitis/Vitis/2019.2/bin/bootgen  -image D:/FPGA/ADS_bus_CS/Vitis_proj/hello_system/Debug/sd_card_temp/boot.bif -w -o i BOOT.BIN

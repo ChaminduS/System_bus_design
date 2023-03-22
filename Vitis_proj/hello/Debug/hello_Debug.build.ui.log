@@ -1,0 +1,25 @@
+2023-03-21T15:03:46.095020300255-15:03:46 **** Incremental Build of configuration Debug for project hello ****
+000-make all 
+000-make --no-print-directory pre-build
+000-a9-linaro-pre-build-step
+000-' '
+000-make --no-print-directory main-build
+000-'Building file: ../src/ADS_bus_app.c'
+000-'Invoking: ARM v7 gcc compiler'
+000-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ADS_bus_app.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -ID:/FPGA/ADS_bus_CS/Vitis_proj/ADS_bus_CS_new/export/ADS_bus_CS_new/sw/ADS_bus_CS_new/standalone_domain/bspinclude/include -MMD -MP -MF"src/ADS_bus_app.d" -MT"src/ADS_bus_app.o" -o "src/ADS_bus_app.o" "../src/ADS_bus_app.c"
+000-'Finished building: ../src/ADS_bus_app.c'
+000-' '
+000-'Building target: hello.elf'
+000-'Invoking: ARM v7 gcc linker'
+000-arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -LD:/FPGA/ADS_bus_CS/Vitis_proj/ADS_bus_CS_new/export/ADS_bus_CS_new/sw/ADS_bus_CS_new/standalone_domain/bsplib/lib -o "hello.elf"  ./src/ADS_bus_app.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+000-'Finished building target: hello.elf'
+000-' '
+000-'Invoking: ARM v7 Print Size'
+000-arm-none-eabi-size hello.elf  |tee "hello.elf.size"
+000-   text	   data	    bss	    dec	    hex	filename
+000-  32412	   1544	  23272	  57228	   df8c	hello.elf
+000-'Finished building: hello.elf.size'
+000-' '
+00255-
+15:03:46 Build Finished (took 709ms)
+

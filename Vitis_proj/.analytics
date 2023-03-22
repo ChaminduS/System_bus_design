@@ -1,0 +1,19 @@
+timestamp=[2023-03-19 16:55:13], mode=WORKBENCH_START, duration=0:00:12.929, duration_ms=12929, data={}
+timestamp=[2023-03-19 16:55:14], mode=WORKBENCH_UI_INIT, duration=0:00:00.986, duration_ms=986, data={editors_count=0, platform_editors_count=0, projects_count=0, platform_projects_count=0, active_platform_editor=false, projects=}
+timestamp=[2023-03-19 16:58:59], mode=PLATFORM_CREATION, duration=0:00:27.465, duration_ms=27465, data={platform_source=dsa, os=standalone, processor=ps7_cortexa9, platform=null}
+timestamp=[2023-03-19 17:01:27], mode=PLATFORM_GENERATION, duration=0:00:27.067, duration_ms=27067, data={name=ADS_bus}
+timestamp=[2023-03-19 17:06:57], mode=APP_CREATION, duration=0:00:10.366, duration_ms=10366, data={name=ADS_bus_App, project_type=sdk, os=standalone, processor=cortex-a9, runtime=C/C++, platform=ADS_bus, application_type=application}
+timestamp=[2023-03-19 20:29:40], mode=WORKBENCH_START, duration=0:00:45.522, duration_ms=45522, data={}
+timestamp=[2023-03-19 20:29:44], mode=WORKBENCH_UI_INIT, duration=0:00:04.261, duration_ms=4261, data={editors_count=4, platform_editors_count=1, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=ADS_bus,ADS_bus_App,ADS_bus_App_system,RemoteSystemsTempFiles}
+timestamp=[2023-03-19 21:34:26], mode=WORKBENCH_START, duration=0:00:09.607, duration_ms=9607, data={}
+timestamp=[2023-03-19 21:34:27], mode=WORKBENCH_UI_INIT, duration=0:00:00.902, duration_ms=902, data={editors_count=5, platform_editors_count=1, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=ADS_bus,ADS_bus_App,ADS_bus_App_system,RemoteSystemsTempFiles}
+timestamp=[2023-03-19 21:37:01], mode=PLATFORM_GENERATION, duration=0:00:22.075, duration_ms=22075, data={name=ADS_bus}
+timestamp=[2023-03-20 14:26:34], mode=WORKBENCH_START, duration=0:00:15.959, duration_ms=15959, data={}
+timestamp=[2023-03-20 14:26:35], mode=WORKBENCH_UI_INIT, duration=0:00:01.837, duration_ms=1837, data={editors_count=4, platform_editors_count=1, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=ADS_bus,ADS_bus_App,ADS_bus_App_system,RemoteSystemsTempFiles}
+timestamp=[2023-03-20 14:39:21], mode=PLATFORM_CREATION, duration=0:00:25.095, duration_ms=25095, data={platform_source=dsa, os=standalone, processor=ps7_cortexa9, platform=null}
+timestamp=[2023-03-20 14:40:25], mode=PLATFORM_GENERATION, duration=0:00:48.272, duration_ms=48272, data={name=ADS_bus_CS_new}
+timestamp=[2023-03-20 14:41:00], mode=APP_CREATION, duration=0:00:13.003, duration_ms=13003, data={name=hello, project_type=sdk, os=standalone, processor=cortex-a9, runtime=C/C++, platform=ADS_bus_CS_new, application_type=application}
+timestamp=[2023-03-21 05:08:16], mode=WORKBENCH_START, duration=0:00:41.363, duration_ms=41363, data={}
+timestamp=[2023-03-21 05:08:23], mode=WORKBENCH_UI_INIT, duration=0:00:06.689, duration_ms=6689, data={editors_count=8, platform_editors_count=2, projects_count=7, platform_projects_count=2, active_platform_editor=false, projects=ADS_bus,ADS_bus_App,ADS_bus_App_system,ADS_bus_CS_new,RemoteSystemsTempFiles,hello,hello_system}
+timestamp=[2023-03-21 12:38:36], mode=WORKBENCH_START, duration=0:00:47.061, duration_ms=47061, data={}
+timestamp=[2023-03-21 12:38:41], mode=WORKBENCH_UI_INIT, duration=0:00:04.756, duration_ms=4756, data={editors_count=6, platform_editors_count=1, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=ADS_bus_CS_new,RemoteSystemsTempFiles,hello,hello_system}

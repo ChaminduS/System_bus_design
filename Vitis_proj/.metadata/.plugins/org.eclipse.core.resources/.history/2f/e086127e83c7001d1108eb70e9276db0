@@ -1,0 +1,230 @@
+/******************************************************************************
+*
+* Copyright (C) 2009 - 2014 Xilinx, Inc.  All rights reserved.
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+*
+* Use of the Software is limited solely to applications:
+* (a) running on a Xilinx device, or
+* (b) that interact with a Xilinx device through a bus or interconnect.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+* XILINX  BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+* WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF
+* OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+* SOFTWARE.
+*
+* Except as contained in this notice, the name of the Xilinx shall not be used
+* in advertising or otherwise to promote the sale, use or other dealings in
+* this Software without prior written authorization from Xilinx.
+*
+******************************************************************************/
+
+/*
+ * Application for Bus Design Project
+ *
+ * ------------------------------------------------
+ * | UART TYPE   BAUD RATE                        |
+ * ------------------------------------------------
+ *   uartns550   9600
+ *   uartlite    Configurable only in HW design
+ *   ps7_uart    115200 (configured by bootrom/bsp)
+ */
+
+#include <stdio.h>
+#include "platform.h"
+#include "xparameters.h"
+#include "xil_printf.h"
+#include "xil_io.h"
+#include "sleep.h"
+
+#define NODES_BASEADDR 0x43C00000
+
+#define MAST1_VALID_ADDR_OFFSET 0x00
+#define MAST1_TYPE_ADDR_OFFSET 0x04
+#define MAST1_ID_ADDR_OFFSET 0x08
+#define MAST1_ADDR_ADDR_OFFSET 0x0c
+#define MAST1_WDATA_ADDR_OFFSET 0x10
+#define MAST1_RDATA_ADDR_OFFSET 0x14
+#define MAST1_READY_ADDR_OFFSET 0x18
+
+#define MAST2_VALID_ADDR_OFFSET 0x1c
+#define MAST2_TYPE_ADDR_OFFSET 0x20
+#define MAST2_ID_ADDR_OFFSET 0x24
+#define MAST2_ADDR_ADDR_OFFSET 0x28
+#define MAST2_WDATA_ADDR_OFFSET 0x2C
+#define MAST2_RDATA_ADDR_OFFSET 0x30
+#define MAST2_READY_ADDR_OFFSET 0x34
+
+#define MAST3_VALID_ADDR_OFFSET 0x38
+#define MAST3_TYPE_ADDR_OFFSET 0x3C
+#define MAST3_ID_ADDR_OFFSET 0x40
+#define MAST3_ADDR_ADDR_OFFSET 0x44
+#define MAST3_WDATA_ADDR_OFFSET 0x48
+#define MAST3_RDATA_ADDR_OFFSET 0x4C
+#define MAST3_READY_ADDR_OFFSET 0x50
+
+#define SLAV1_RDATA_ADDR_OFFSET 0x68
+#define SLAV1_READY_ADDR_OFFSET 0x6C
+
+#define SLAV2_RDATA_ADDR_OFFSET 0x84
+#define SLAV2_READY_ADDR_OFFSET 0x88
+
+#define SLAV3_RDATA_ADDR_OFFSET 0xA0
+#define SLAV3_READY_ADDR_OFFSET 0xA4
+#define SLAV3_SPLIT_ADDR_OFFSET 0XA8
+
+u32 rdata=0;
+
+/*Note on slave addressing
+ * 0 	- 4095  :- Slave1
+ * 4096 - 8191  :- Slave2
+ * 8192	- 12286 :- Slave3
+*/
+
+void setmaster1write(u32 addr,u32 wdata){
+	Xil_Out32(NODES_BASEADDR+MAST1_VALID_ADDR_OFFSET,1);
+	Xil_Out32(NODES_BASEADDR+MAST1_TYPE_ADDR_OFFSET,1);
+	Xil_Out32(NODES_BASEADDR+MAST1_ID_ADDR_OFFSET,1);
+	Xil_Out32(NODES_BASEADDR+MAST1_ADDR_ADDR_OFFSET,addr);
+	Xil_Out32(NODES_BASEADDR+MAST1_WDATA_ADDR_OFFSET,wdata);
+	xil_printf("Master1 initiating a write operation\n\r");
+}
+
+void deassertMaster1Valid(){
+	Xil_Out32(NODES_BASEADDR+MAST1_VALID_ADDR_OFFSET,0);
+	xil_printf("Deasserting Master1 valid bit to release bus\n\r");
+}
+
+void deassertMaster2Valid(){
+	Xil_Out32(NODES_BASEADDR+MAST2_VALID_ADDR_OFFSET,0);
+	xil_printf("Deasserting Master2 valid bit to release bus\n\r");
+}
+
+void setmaster2write(u32 addr,u32 wdata){
+	Xil_Out32(NODES_BASEADDR+MAST2_VALID_ADDR_OFFSET,1);
+	Xil_Out32(NODES_BASEADDR+MAST2_TYPE_ADDR_OFFSET,1);
+	Xil_Out32(NODES_BASEADDR+MAST2_ID_ADDR_OFFSET,1);
+	Xil_Out32(NODES_BASEADDR+MAST2_ADDR_ADDR_OFFSET,addr);
+	Xil_Out32(NODES_BASEADDR+MAST2_WDATA_ADDR_OFFSET,wdata);
+	xil_printf("Master2 initiating a write operation\n\r");
+}
+
+void setmaster3write(u32 addr,u32 wdata){
+	Xil_Out32(NODES_BASEADDR+MAST3_VALID_ADDR_OFFSET,1);
+	Xil_Out32(NODES_BASEADDR+MAST3_TYPE_ADDR_OFFSET,1);
+	Xil_Out32(NODES_BASEADDR+MAST3_ID_ADDR_OFFSET,1);
+	Xil_Out32(NODES_BASEADDR+MAST3_ADDR_ADDR_OFFSET,addr);
+	Xil_Out32(NODES_BASEADDR+MAST3_WDATA_ADDR_OFFSET,wdata);
+	xil_printf("Master3 initiating a write operation\n\r");
+}
+
+void assertSlav1Ready(){
+	Xil_Out32(NODES_BASEADDR+SLAV1_READY_ADDR_OFFSET,1);
+	xil_printf("Asserting slave1 ready bit\n\r");
+}
+
+void assertSlav2Ready(){
+	Xil_Out32(NODES_BASEADDR+SLAV2_READY_ADDR_OFFSET,1);
+	xil_printf("Asserting slave2 ready bit\n\r");
+}
+
+void assertSlav3Ready(){
+	Xil_Out32(NODES_BASEADDR+SLAV3_READY_ADDR_OFFSET,1);
+	xil_printf("Asserting slave3 ready bit\n\r");
+}
+
+void deassertSlav1Ready(){
+	Xil_Out32(NODES_BASEADDR+SLAV1_READY_ADDR_OFFSET,0);
+	xil_printf("Deasserting slave1 ready bit\n\r");
+}
+
+void deassertSlav2Ready(){
+	Xil_Out32(NODES_BASEADDR+SLAV2_READY_ADDR_OFFSET,0);
+	xil_printf("Deasserting slave2 ready bit\n\r");
+}
+
+void deassertSlav3Ready(){
+	Xil_Out32(NODES_BASEADDR+SLAV3_READY_ADDR_OFFSET,0);
+	xil_printf("Deasserting slave3 ready bit\n\r");
+}
+
+void master1read(u32 addr){
+	Xil_Out32(NODES_BASEADDR+MAST1_VALID_ADDR_OFFSET,1);
+	Xil_Out32(NODES_BASEADDR+MAST1_TYPE_ADDR_OFFSET,0);
+	Xil_Out32(NODES_BASEADDR+MAST1_ID_ADDR_OFFSET,1);
+	Xil_Out32(NODES_BASEADDR+MAST1_ADDR_ADDR_OFFSET,addr);
+	xil_printf("Master1 initiating a read operation\n\r");
+}
+
+void master2read(u32 addr){
+	Xil_Out32(NODES_BASEADDR+MAST2_VALID_ADDR_OFFSET,1);
+	Xil_Out32(NODES_BASEADDR+MAST2_TYPE_ADDR_OFFSET,0);
+	Xil_Out32(NODES_BASEADDR+MAST2_ID_ADDR_OFFSET,1);
+	Xil_Out32(NODES_BASEADDR+MAST2_ADDR_ADDR_OFFSET,addr);
+	xil_printf("Master2 initiating a read operation\n\r");
+}
+
+void master3read(u32 addr){
+	Xil_Out32(NODES_BASEADDR+MAST3_VALID_ADDR_OFFSET,1);
+	Xil_Out32(NODES_BASEADDR+MAST3_TYPE_ADDR_OFFSET,0);
+	Xil_Out32(NODES_BASEADDR+MAST3_ID_ADDR_OFFSET,1);
+	Xil_Out32(NODES_BASEADDR+MAST3_ADDR_ADDR_OFFSET,addr);
+	xil_printf("Master3 initiating a read operation\n\r");
+}
+
+void readmaster1(){
+	rdata=Xil_In32(NODES_BASEADDR+MAST1_RDATA_ADDR_OFFSET);
+	xil_printf("Data read from Master1 :- %d\n\r",rdata);
+}
+
+void readmaster2(){
+	rdata=Xil_In32(NODES_BASEADDR+MAST2_RDATA_ADDR_OFFSET);
+	xil_printf("Data read from Master2 :- %d\n\r",rdata);
+}
+
+void readmaster3(){
+	rdata=Xil_In32(NODES_BASEADDR+MAST3_RDATA_ADDR_OFFSET);
+	xil_printf("Data read from Master3 :- %d\n\r",rdata);
+}
+
+int main()
+{
+    init_platform();
+    xil_printf("\nStarting Data Transaction using custom bus design\n\r");
+
+    xil_printf("\n*************Data Transaction #1*************\n\r");
+
+
+    deassertSlav1Ready();
+    setmaster1write(4096,357);
+    sleep(0.1);
+    master1read(4096);
+    sleep(0.1);
+    readmaster1();
+
+    xil_printf("\n*************Data Transaction #2*************\n\r");
+
+
+    assertSlav1Ready();
+    setmaster1write(4096,357);
+    sleep(0.1);
+    master1read(4096);
+    sleep(0.1);
+    readmaster1();
+
+
+    cleanup_platform();
+    return 0;
+}
+

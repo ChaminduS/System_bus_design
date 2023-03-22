@@ -1,0 +1,10 @@
+15:03:47 **** Incremental Build of configuration Debug for project hello_system ****
+make all 
+Generating bif file for the system project
+generate_system_bif.bat 56042 D:/FPGA/ADS_bus_CS/Vitis_proj/ADS_bus_CS_new/export/ADS_bus_CS_new/ADS_bus_CS_new.xpfm standalone_domain D:/FPGA/ADS_bus_CS/Vitis_proj/hello_system/Debug/system.bif
+sdcard_gen --xpfm D:/FPGA/ADS_bus_CS/Vitis_proj/ADS_bus_CS_new/export/ADS_bus_CS_new/ADS_bus_CS_new.xpfm --sys_config ADS_bus_CS_new --bif D:/FPGA/ADS_bus_CS/Vitis_proj/hello_system/Debug/system.bif --bitstream D:/FPGA/ADS_bus_CS/Vitis_proj/hello/_ide/bitstream/design_1_wrapper.bit --elf D:/FPGA/ADS_bus_CS/Vitis_proj/hello/Debug/hello.elf,ps7_cortexa9_0
+creating BOOT.BIN using D:/FPGA/ADS_bus_CS/Vitis_proj/hello/_ide/bitstream/design_1_wrapper.bit
+Running F:/Vitis/Vitis/2019.2/bin/bootgen  -image D:/FPGA/ADS_bus_CS/Vitis_proj/hello_system/Debug/sd_card_temp/boot.bif -w -o i BOOT.BIN
+
+15:03:53 Build Finished (took 5s.901ms)
+
